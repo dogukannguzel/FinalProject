@@ -3,15 +3,7 @@ using System.Collections.Generic;
 
 namespace DataAccess.Abstract
 {
-   public interface IProductDal
+   public interface IProductDal:IEntityRepository<Product>
     {
-
-        List<Product> GetAll();
-        void Add(Product product);
-        void Uptade(Product product);
-        void Delete(Product product);
-
-        List<Product> getAllByCategory(int categoryId);
-
     }
 }

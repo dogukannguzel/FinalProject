@@ -3,6 +3,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.InMemory
 {
@@ -16,11 +17,11 @@ namespace DataAccess.Concrete.InMemory
         {
             _products = new List<Product> {
             
-            new Product{ProductId=1,CategoryId=1,ProductName="Bardak",UnitPrice=15,UnitsInStok=15 },
-            new Product{ProductId=2,CategoryId=1,ProductName="Kamera",UnitPrice=15333,UnitsInStok=153 } ,
-            new Product{ProductId=3,CategoryId=2,ProductName="Telefon",UnitPrice=152,UnitsInStok=152 },
-            new Product{ProductId=4,CategoryId=2,ProductName="Klavye",UnitPrice=245,UnitsInStok=34 },
-            new Product{ProductId=5,CategoryId=2,ProductName="Mause",UnitPrice=85,UnitsInStok=1 },
+            new Product{ProductId=1,CategoryId=1,ProductName="Bardak",UnitPrice=15,UnitsInStock=15 },
+            new Product{ProductId=2,CategoryId=1,ProductName="Kamera",UnitPrice=15333,UnitsInStock=153 } ,
+            new Product{ProductId=3,CategoryId=2,ProductName="Telefon",UnitPrice=152,UnitsInStock=152 },
+            new Product{ProductId=4,CategoryId=2,ProductName="Klavye",UnitPrice=245,UnitsInStock=34 },
+            new Product{ProductId=5,CategoryId=2,ProductName="Mause",UnitPrice=85,UnitsInStock=1 },
               
             };
         }
@@ -37,9 +38,19 @@ namespace DataAccess.Concrete.InMemory
             _products.Remove(productToDelete);
         }
 
+        public Product Get(Expression<Func<Product, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Product> GetAll()
         {
             return _products;
+        }
+
+        public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Product> getAllByCategory(int categoryId)
@@ -55,7 +66,7 @@ namespace DataAccess.Concrete.InMemory
             productToUptade.ProductName = product.ProductName;
             productToUptade.CategoryId = product.CategoryId;
             productToUptade.UnitPrice = product.UnitPrice;
-            productToUptade.UnitsInStok = product.UnitsInStok;
+            productToUptade.UnitsInStock = product.UnitsInStock;
 
 
         }
